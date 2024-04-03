@@ -32,4 +32,4 @@ jobs:
       shell: pwsh
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      run: Publish-Module -Path ./output/PowerShell.Selenium -Repository PSGallery -NuGetApiKey $NUGET_API_KEY
+      run: Publish-Module -Path ./output/PowerShell.Selenium -Repository PSGallery -NuGetApiKey $env:NUGET_API_KEY
