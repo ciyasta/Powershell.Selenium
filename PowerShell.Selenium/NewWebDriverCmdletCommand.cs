@@ -36,7 +36,7 @@ namespace PowerShell.Selenium
         }
         protected override void EndProcessing()
         {
-            WriteVerbose("End!");
+            base.EndProcessing();
         }
 
         private string GetSeleniumManagerPath()
