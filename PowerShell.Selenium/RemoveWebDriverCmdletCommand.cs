@@ -19,8 +19,7 @@ namespace PowerShell.Selenium
 
         protected override void ProcessRecord()
         {
-            if(Driver != null)
-                Driver.Quit();
+            Driver?.Quit();
         }
 
         protected override void EndProcessing()
