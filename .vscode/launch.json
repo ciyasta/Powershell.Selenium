@@ -14,7 +14,7 @@
                 "-NoExit",
                 "-NoProfile",
                 "-Command",
-                "Import-Module ${workspaceFolder}/bin/Debug/netstandard2.0/PowerShell.Selenium.dll",
+                "Import-Module ${workspaceFolder}/PowerShell.Selenium/bin/Debug/netstandard2.0/PowerShell.Selenium.dll",
             ],
             "cwd": "${workspaceFolder}",
             "stopAtEntry": false,
