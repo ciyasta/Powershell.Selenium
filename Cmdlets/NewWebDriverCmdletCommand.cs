@@ -7,7 +7,7 @@ using OpenQA.Selenium.Chrome;
 using System.Runtime.InteropServices;
 using OpenQA.Selenium.Edge;
 
-namespace PowerShell.Selenium
+namespace PowerShell.Selenium.Cmdlets
 {
     [Cmdlet(VerbsCommon.New,"WebDriver")]
     [OutputType(typeof(IWebDriver))]

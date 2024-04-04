@@ -1,7 +1,7 @@
 using System.Management.Automation;
 using OpenQA.Selenium;
 
-namespace PowerShell.Selenium
+namespace PowerShell.Selenium.Cmdlets
 {
     [Cmdlet(VerbsCommon.Remove, "WebDriver")]
     [OutputType(typeof(void))]

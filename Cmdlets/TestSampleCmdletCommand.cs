@@ -2,7 +2,7 @@
 using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 
-namespace PowerShell.Selenium
+namespace PowerShell.Selenium.Cmdlets
 {
     [Cmdlet(VerbsDiagnostic.Test,"SampleCmdlet")]
     [OutputType(typeof(FavoriteStuff))]
