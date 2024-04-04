@@ -3,9 +3,9 @@
 PowerShell module for running automating web using Selenium.
 
 ## Usage
-Import the module from PowerShell Gallery.
+Install the module from PowerShell Gallery.
 ```powershell
-Import-Module PowerShell.Selenium
+Install-Module PowerShell.Selenium
 ```
 ### Create
 Create web driver using `New-WebDriver` and you can set which browser you want to create driver for.
