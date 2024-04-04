@@ -6,6 +6,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Runtime.InteropServices;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Safari;
 
 namespace PowerShell.Selenium.Cmdlets
 {
@@ -16,7 +18,7 @@ namespace PowerShell.Selenium.Cmdlets
         [Parameter(
             Mandatory = true,
             Position = 0)]
-        [ValidateSet("Chrome", "Edge")]
+        [ValidateSet("Chrome", "Edge", "Firefox", "Safari")]
         public string Browser { get; set; }
         protected override void BeginProcessing()
         {
@@ -31,6 +33,12 @@ namespace PowerShell.Selenium.Cmdlets
                     break;
                 case "Edge":
                     WriteObject(new EdgeDriver());
+                    break;
+                case "Firefox":
+                    WriteObject(new FirefoxDriver());
+                    break;
+                case "Safari":
+                    WriteObject(new SafariDriver());
                     break;
             }
         }
