@@ -22,7 +22,9 @@ namespace PowerShell.Selenium.Cmdlets
         public string Browser { get; set; }
         protected override void BeginProcessing()
         {
-            Environment.SetEnvironmentVariable("SE_MANAGER_PATH", GetSeleniumManagerPath());
+            var seleniumManagerPath = GetSeleniumManagerPath();
+            WriteVerbose($"Selenium Manager path: {seleniumManagerPath}");
+            Environment.SetEnvironmentVariable("SE_MANAGER_PATH", seleniumManagerPath);
         }
         protected override void ProcessRecord()
         {
@@ -53,14 +55,17 @@ namespace PowerShell.Selenium.Cmdlets
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
+                    WriteVerbose("OS Platform: Windows");
                     return Path.Combine(currentDirectory, "selenium-manager", "windows", "selenium-manager.exe");
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 {
+                    WriteVerbose("OS Platform: Linux");
                     return Path.Combine(currentDirectory, "selenium-manager", "linux", "selenium-manager");
                 }
                 else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
                 {
+                    WriteVerbose("OS Platform: OSX");
                     return Path.Combine(currentDirectory, "selenium-manager", "macos", "selenium-manager");
                 }
                 else
