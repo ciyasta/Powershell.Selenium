@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) 2024 ciyasta. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'PowerShell module for running automating web using Selenium.'
+Description = 'Cross platform PowerShell module for automating browser based tests with no setup of Selenium or Web drivers.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
