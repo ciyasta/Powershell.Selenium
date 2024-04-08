@@ -11,15 +11,22 @@ using OpenQA.Selenium.Safari;
 
 namespace PowerShell.Selenium.Cmdlets
 {
-    [Cmdlet(VerbsCommon.New,"WebDriver")]
-    [OutputType(typeof(IWebDriver))]
+    [Cmdlet(VerbsCommon.New, "WebDriver")]
+    [OutputType(typeof(WebDriver))]
     public class NewWebDriverCmdletCommand : PSCmdlet
     {
         [Parameter(
             Mandatory = true,
-            Position = 0)]
+            Position = 0
+        )]
         [ValidateSet("Chrome", "Edge", "Firefox", "Safari")]
         public string Browser { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            Position = 1
+        )]
+        public Uri Uri { get; set; }
         protected override void BeginProcessing()
         {
             var seleniumManagerPath = GetSeleniumManagerPath();
@@ -28,21 +35,24 @@ namespace PowerShell.Selenium.Cmdlets
         }
         protected override void ProcessRecord()
         {
-            switch(Browser)
+            WebDriver WebDriver = null;
+            switch (Browser)
             {
-                case "Chrome": 
-                    WriteObject(new ChromeDriver());
+                case "Chrome":
+                    WebDriver = new ChromeDriver();
                     break;
                 case "Edge":
-                    WriteObject(new EdgeDriver());
+                    WebDriver = new EdgeDriver();
                     break;
                 case "Firefox":
-                    WriteObject(new FirefoxDriver());
+                    WebDriver = new FirefoxDriver();
                     break;
                 case "Safari":
-                    WriteObject(new SafariDriver());
+                    WebDriver = new SafariDriver();
                     break;
             }
+            WebDriver?.Navigate().GoToUrl(Uri);
+            WriteObject(WebDriver);
         }
         protected override void EndProcessing()
         {
@@ -54,25 +64,22 @@ namespace PowerShell.Selenium.Cmdlets
             var currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    WriteVerbose("OS Platform: Windows");
-                    return Path.Combine(currentDirectory, "selenium-manager", "windows", "selenium-manager.exe");
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                {
-                    WriteVerbose("OS Platform: Linux");
-                    return Path.Combine(currentDirectory, "selenium-manager", "linux", "selenium-manager");
-                }
-                else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-                {
-                    WriteVerbose("OS Platform: OSX");
-                    return Path.Combine(currentDirectory, "selenium-manager", "macos", "selenium-manager");
-                }
-                else
-                {
-                    throw new PlatformNotSupportedException(
-                        $"Selenium Manager doesn't support your runtime platform: {RuntimeInformation.OSDescription}");
-                }
+            {
+                return Path.Combine(currentDirectory, "selenium-manager", "windows", "selenium-manager.exe");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                return Path.Combine(currentDirectory, "selenium-manager", "linux", "selenium-manager");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                return Path.Combine(currentDirectory, "selenium-manager", "macos", "selenium-manager");
+            }
+            else
+            {
+                throw new PlatformNotSupportedException(
+                    $"Selenium Manager doesn't support your runtime platform: {RuntimeInformation.OSDescription}");
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ namespace PowerShell.Selenium.Cmdlets
         [Parameter(
             Mandatory = true,
             Position = 0)]
-        public IWebDriver Driver { get; set; }
+        public WebDriver Driver { get; set; }
 
         protected override void BeginProcessing()
         {

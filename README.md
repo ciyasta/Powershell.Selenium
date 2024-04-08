@@ -15,10 +15,10 @@ Install-Module PowerShell.Selenium
 Once you've installed the module, just run some cmdlets of PowerShell and start seeing the magic.
 
 ### New Web Driver
-Create web driver using `New-WebDriver` and where you can set which browser you want to create driver for.
+Create web driver using `New-WebDriver` and where you can set which browser you want to create driver for and navigation link.
 
 ```powershell
-$Driver = New-WebDriver -Browser Edge
+$Driver = New-WebDriver -Browser Edge -Uri "https://google.com"
 ```
 ### Remove Web Driver
 Remove the web driver once automation is complete using `Remove-WebDriver`.
