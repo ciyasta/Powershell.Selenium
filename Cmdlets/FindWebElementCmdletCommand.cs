@@ -3,9 +3,9 @@ using OpenQA.Selenium;
 
 namespace PowerShell.Selenium.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "WebElement")]
+    [Cmdlet(VerbsCommon.Find, "WebElement")]
     [OutputType(typeof(IWebElement))]
-    public class GetWebElementCmdletCommand : PSCmdlet
+    public class FindWebElementCmdletCommand : PSCmdlet
     {
         [Parameter(
             Mandatory = true,
